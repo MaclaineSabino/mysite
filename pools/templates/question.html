@@ -1,0 +1,43 @@
+
+	{% extends 'base.html' %}
+	
+	{%block body %}
+		
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">{{questao.question_text}}<span class="opcoes_conteiner">
+  	{% if questao.closed %}
+  	<span class="opcoes"></span>
+  	{% else %}
+  	<span class="opcoes"><a href="{% url 'results' pk=questao.pk %}">RESULTADOS</a></span>
+  	{% endif %}
+  	
+  	<span class="opcoes"><a href="{% url 'manage' pk=questao.pk %}">GERENCIAR QUESTÃO</a></span>
+  	
+  </span></div>
+
+  <!-- Table -->
+  <table class="table">
+	<tr>
+    	<td>Alternativas</td>
+    	
+    	
+    </tr>
+	{%for list in choice %}
+	
+	<tr>
+    	<td>{{list.choice_text}}</td>
+    	<td><a href="{% url 'voto' pk=list.pk %}">votar</a></td>
+    	
+    	
+    	
+    </tr>
+  
+	
+	{% endfor %}
+</table>
+
+</div>
+
+{% endblock %}

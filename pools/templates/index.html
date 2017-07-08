@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{%block body %}
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Questões</div>
+
+  <!-- Table -->
+  <table class="table">
+	<tr>
+    	<td>Questão</td>
+    	
+    	<td>Data de publicação</td>
+    </tr>
+	{% for quest in questoes %}
+	
+	
+		
+		
+		
+    
+    <tr>
+    	<td><a href="{% url 'questaodet' pk=quest.pk %}">{{quest.question_text}}</td>
+    	
+    	<td>{{quest.pub_date}}</td>
+    	
+    </tr>
+  
+	
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

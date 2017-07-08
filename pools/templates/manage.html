@@ -1,0 +1,41 @@
+
+	{% extends 'base.html' %}
+	
+	{%block body %}
+		
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <h2>Gerenciamento de Questões</h2>
+  <div class="panel-heading">{{questao.question_text}}<span class="opcoes_conteiner"><span id="stat" class="opcoes">status:</span>
+  	      {% if questao.closed %}
+    		<span id="aberta" class="opcoes">Aberta</span>
+    		{% else %}
+    		<span id="fechada" class="opcoes">Fechada</span>
+    		{% endif %} 
+    		<a href="{% url 'status' pk=questao.pk %}" onClick="return ConfirmarAlteracao()">Alterar Status</a>
+    		</span>
+  	
+</div>
+  <!-- Table -->
+  <table class="table">
+	<tr>
+    	<td>Alternativas</td>
+    	
+    	
+    </tr>
+	{%for list in choice %}
+	
+	<tr>
+    	<td>{{list.choice_text}}</td>
+    	
+    	<td><a href="{% url 'remover' pk=list.pk %}" onClick="return ConfirmarAlteracao()">REMOVER</a></td>
+    	
+    	
+    </tr>
+  
+	
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+	{% extends 'base.html' %}
+	
+	{%block body %}
+		
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <h2>Resultados da votação</h2>
+  <div class="panel-heading">{{questao.question_text}}</div>
+
+  <!-- Table -->
+  <table class="table">
+	<tr>
+    	<td>Alternativas</td>
+    	
+    	<td>Votos</td>
+    	<td>Percentual</td>
+    </tr>
+	{%for list in choice %}
+	
+	<tr>
+    	<td>{{list.choice_text}}</td>
+    	
+    	<td>{{list.votes}}</td>
+    	<td><script>percentual({{list.votes}},{{soma}})</script></td>
+    	
+    </tr>
+  
+	
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

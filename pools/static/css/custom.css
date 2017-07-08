@@ -1,0 +1,34 @@
+body {
+	padding-top: 50px;
+	color: #959595;
+	}
+	
+h1, h2, h3, h4, h5, h6 {
+	color: black;
+	}
+	
+.feature {
+	background-color: yellowgreen;
+	color: greenyellow;
+	}
+	
+
+.opcoes_conteiner{
+	float:right;
+	
+	
+}
+.opcoes{
+	margin-right:20px;
+	
+}
+#stat{
+	color:#2F4F4F;
+	font-weight:bolder;
+}
+#aberta{
+	color:#0000FF;
+}
+#fechada{
+	color:#B22222;
+}
