@@ -16,3 +16,17 @@ return false;
 }
 
 }
+
+function ConfirmarVoto(){		
+if (confirm ("Deseja realmente confirmar seu voto?")){
+	
+	return true;
+}	
+		
+	
+else{		
+	
+return false;
+}
+
+}

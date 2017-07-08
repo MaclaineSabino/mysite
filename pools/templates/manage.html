@@ -13,7 +13,7 @@
     		{% else %}
     		<span id="fechada" class="opcoes">Fechada</span>
     		{% endif %} 
-    		<a href="{% url 'status' pk=questao.pk %}" onClick="return ConfirmarAlteracao()">Alterar Status</a>
+    		<a id="btn_status" href="{% url 'status' pk=questao.pk %}" onClick="return ConfirmarAlteracao()">Alterar Status</a>
     		</span>
   	
 </div>

@@ -54,7 +54,7 @@ def vote(request,pk):
     questao = choice.question
     choic = Choice.objects.filter(question=questao)
 
-    return render(request,'results.html',{'questao':questao,
+    return render(request,'question.html',{'questao':questao,
                                            'choice':choic})
 
 def manage(request,pk):
