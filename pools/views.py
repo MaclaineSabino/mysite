@@ -27,12 +27,25 @@ def exibir(request,pk):
 
     questao=Question.objects.get(id=pk)
     choic = Choice.objects.filter(question=questao)
+    choic_nulls = Choice.objects.filter(question=None)
     return render(request,'question.html',{'questao':questao,
-                                           'choice':choic})
+                                           'choice':choic,
+                                           'choice_nulls':choic_nulls})
+def incluir(request,pk,pkc):
+    questao = Question.objects.get(id=pk)
+    choice = Choice.objects.get(id=pkc)
+    choice.question=questao
+    choice.save()
+    choic = Choice.objects.filter(question=questao)
+    choic_nulls = Choice.objects.filter(question=None)
+
+    return render(request,'question.html',{'questao':questao,
+                                           'choice':choic,
+                                           'choice_nulls':choic_nulls})
+
 def results(request,pk):
     soma=0
-    cont=0
-    tabela={}
+   
     questao=Question.objects.get(id=pk)
 
     choic = Choice.objects.filter(question=questao)
@@ -52,10 +65,8 @@ def vote(request,pk):
     choice.votes=choice.votes+1
     choice.save()
     questao = choice.question
-    choic = Choice.objects.filter(question=questao)
 
-    return render(request,'question.html',{'questao':questao,
-                                           'choice':choic})
+    return exibir(request,questao.pk)
 
 def manage(request,pk):
     questao=Question.objects.get(id=pk)
@@ -65,15 +76,16 @@ def manage(request,pk):
 
 def status(request,pk):
     questao=Question.objects.get(id=pk)
-    choic = Choice.objects.filter(question=questao)
     questao.closed=not questao.closed
     questao.save()
-    return render(request,'manage.html',{'questao':questao,
-                                           'choice':choic})
+    return exibir(request,questao.pk)
+
 def remover(request,pk):
     choice = Choice.objects.get(id=pk)
     questao = choice.question
-    choice.delete()
-    choic = Choice.objects.filter(question=questao)
-    return render(request,'manage.html',{'questao':questao,
-                                           'choice':choic})
+    choice.question=None
+    choice.votes=0
+    choice.save()
+    return exibir(request,questao.pk)
+
+

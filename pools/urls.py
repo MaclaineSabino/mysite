@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^question/(?P<pk>\d+)/vote/$',views.vote, name='voto'),
     url(r'^question/(?P<pk>\d+)/manage/$',views.manage, name='manage'),
     url(r'^question/(?P<pk>\d+)/status/$',views.status, name='status'),
-    url(r'^question/(?P<pk>\d+)/remover/$',views.remover, name='remover')
+    url(r'^question/(?P<pk>\d+)/remover/$',views.remover, name='remover'),
+    url(r'^question/(?P<pk>\d+)/incluir/(?P<pkc>\d+)$',views.incluir, name='incluir')
 ]
